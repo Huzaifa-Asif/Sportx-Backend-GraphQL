@@ -56,11 +56,21 @@ const server = new ApolloServer({
 });
 
 
+// mongoose
+//   .connect(mongoDB, { useNewUrlParser: true })
+//   .then(() => {
+//     console.log('MongoDB Connected');
+//     return server.listen({ port: process.env.PORT || 5000 });
+//   })
+//   .then((res) => {
+//     console.log(`Server running at ${res.url}`);
+//   });
+const mongoDB = process.env.MONGODB_URI || MONGODB;
 mongoose
-  .connect(MONGODB, { useNewUrlParser: true })
+  .connect(mongoDB, { useNewUrlParser: true })
   .then(() => {
     console.log('MongoDB Connected');
-    return server.listen({ port: process.env.PORT || 5000 });
+    return server.listen({ port: 5000 });
   })
   .then((res) => {
     console.log(`Server running at ${res.url}`);
