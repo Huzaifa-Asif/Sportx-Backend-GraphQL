@@ -5,7 +5,11 @@
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "nodejs",
+    "express",
+    "graphql"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {

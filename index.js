@@ -9,6 +9,7 @@ const ServiceProvider = require('./models/serviceProvider');
 
 const { MONGODB } = require('./config.js');
 
+
 const typeDefs = gql`
   type Booking {
     state: String!
@@ -52,19 +53,12 @@ const resolvers = {
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  introspection: true,
+  playground: true,
 });
 
 
-// mongoose
-//   .connect(mongoDB, { useNewUrlParser: true })
-//   .then(() => {
-//     console.log('MongoDB Connected');
-//     return server.listen({ port: process.env.PORT || 5000 });
-//   })
-//   .then((res) => {
-//     console.log(`Server running at ${res.url}`);
-//   });
 const mongoDB = process.env.MONGODB_URI || MONGODB;
 mongoose
   .connect(mongoDB, { useNewUrlParser: true })
